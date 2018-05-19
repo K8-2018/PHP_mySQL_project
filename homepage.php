@@ -1,6 +1,5 @@
 <?php
-    include connect.php
-        
+    include 'connect.php';
     $sql = "SELECT * FROM course";
     $result = mysqli_query($conn,$sql) or die("Unable to Connect, sorry :D"); //or 
     $resultLen = mysqli_num_rows($result);
@@ -42,55 +41,34 @@
 
 <div class="container-fluid">
   <div class="smallContainer"><h1>Courses | Students</h1>
-    
+<!--    make bootstrap grid 2-2-8-->
     <div class="courses">
-<!--       <?php if($type == "getCourses") { ?> -->
+  
 <!--// when the user clicks "homepage.html" ("School" in the navbar), the following tables should be displayed:   -->
-     <table>
-           <h1>Courses</h1> 
+        <h1>Courses</h1> 
 <!--         The title should be clickable-->
-           <tr style="background-color: silver;">
-                <td>Image</td>
-                <td>ID</td> 
-                <td>Name</td>
-           </tr>
-           
            <?php while($row = mysqli_fetch_assoc($result)){ ?>
-               <tr style="background-color: pink;">
-                    <td><?=$row['id']; ?></td>
-                    <td><?=$row['name']; ?></td>
-                    <td><?=$row['image']; ?></td>
-               </tr>
+                <?=$row['name']; ?>
            <?php } ?>
-     </table>
-        <?php } ?>
+        
     </div>      
     
     <div class="students">
-<!--       <?php if($type == "getStudents") { ?>-->
-     <table>
-           <h1>Students</h1>
+        <h1>Students</h1>
          <!--         The title should be clickable-->
-
-           <tr style="background-color: silver;">
-                <td>Image</td>
-                <td>Name</td>
-                <td>Phone</td>
-           </tr>
-           
            <?php while($row = mysqli_fetch_assoc($result)){ ?>
-               <tr style="background-color: pink;">
-                    <td><?=$row['image']; ?></td>
-                    <td><?=$row['name']; ?></td>
-                    <td><?=$row['phone']; ?></td>
-               </tr>
+                <?=$row['image']; ?>
+                <?=$row['name']; ?>
+                <?=$row['phone']; ?>
            <?php } ?>
-     </table>
-        <?php } ?>
    </div>    
     
   </div>
-  <div class="mainContainer"><h1>Main Container</h1></div>    
+    
+  <div class="mainContainer">
+      <h1>Main Container</h1>
+      <p>Here different screens will appear when you click on "+"</p>
+  </div>    
 </div>
 
 </body>
