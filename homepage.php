@@ -40,35 +40,32 @@
 </nav>
 
 <div class="container-fluid">
-  <div class="smallContainer"><h1>Courses | Students</h1>
-<!--    make bootstrap grid 2-2-8-->
-    <div class="courses">
-  
-<!--// when the user clicks "homepage.html" ("School" in the navbar), the following tables should be displayed:   -->
-        <h1>Courses</h1> 
-<!--         The title should be clickable-->
-           <?php while($row = mysqli_fetch_assoc($result)){ ?>
+    <div class="row">
+        <div class="courses col-lg-2">
+            <h1>Courses</h1>    
+            <!--         The title should be clickable-->
+            <!--// when the user clicks "homepage.html" ("School" in the navbar), the following tables should be displayed:   -->
+
+            <?php while($row = mysqli_fetch_assoc($result)){ ?>
                 <?=$row['name']; ?>
            <?php } ?>
+        </div>
         
-    </div>      
-    
-    <div class="students">
-        <h1>Students</h1>
-         <!--         The title should be clickable-->
-           <?php while($row = mysqli_fetch_assoc($result)){ ?>
+        <div class="students col-lg-2">
+            <h1>Students</h1>
+            <!--         The title should be clickable-->
+            <?php while($row = mysqli_fetch_assoc($result)){ ?>
                 <?=$row['image']; ?>
                 <?=$row['name']; ?>
                 <?=$row['phone']; ?>
-           <?php } ?>
-   </div>    
-    
-  </div>
-    
-  <div class="mainContainer">
-      <h1>Main Container</h1>
-      <p>Here different screens will appear when you click on "+"</p>
-  </div>    
+            <?php } ?>
+        </div>
+        
+        <div class="mainContainer col-lg-8">
+            <h1>Main Container</h1>
+            <p>Here different screens will appear when you click on "+"</p>
+        </div>     
+    </div>
 </div>
 
 </body>
