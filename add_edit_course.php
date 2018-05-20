@@ -109,16 +109,24 @@ $id = 0;
       </ul>
     </nav>
     
-   <div class="container" align="center";>
-        <form method="get" action="add_edit_course.php">
-            <button type="submit" class="btn btn-success" name="type" value="save">Save</button>
-            <button type="submit" class="btn btn-danger" name="type" value="delete">Delete</button><br>
-            <b>Name </b><input type="text" name="name" value="" placeholder="Enter name"><br>
-            <b>Description </b><textarea rows="4" cols="23" placeholder="Course description"></textarea><br>
+    <div class="container" align="center";>
+        <form method="get" id="add_edit_course" action="add_edit_course.php">
+            <button type="submit" class="btn btn-success" name="type" value="save" onclick="saveFormData();">Save</button>
+            <button type="submit" class="btn btn-danger" name="type" value="delete" onclick="deleteFormData();">Delete</button><br><br>
+            <b>Name</b><input type="text" name="name" value="" placeholder="Enter name"><br><br>
+            <b>Description</b><textarea rows="4" cols="23" placeholder="Course description"></textarea><br>
         </form>
-   </div>
-   
-<!--
+    </div>
+    
+<script>
+function saveFormData(){
+    var frm_element = document.getElementById ('add_edit_course').action;
+    document.getElementById("demo").innerHTML = frm_element;
+    }
+</script>       
+    <p id="demo"></p>
+
+<!-- במסך עריכה יש לטעון את כל פרטי הקורס לטופס
    <div class="course">
        <?php if($type == "save") { ?>
      <table>
@@ -128,7 +136,6 @@ $id = 0;
                 <td>Name</td>
                 <td>Description</td>
            </tr>
-
            <?php while($row = mysqli_fetch_assoc($result)){ ?>
                <tr style="background-color: pink;">
                     <td><?=$row['id']; ?></td>

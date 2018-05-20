@@ -20,6 +20,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <link rel = "stylesheet" type = "text/css" href = "style.css"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 
 <body>
@@ -41,8 +42,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="courses col-lg-2">
-            <h1>Courses</h1>    
+        <div class="courses col-lg-2" style="color:green;">
+            <button onclick="addCourse()">
+                <h2>Courses</h2>
+                <i class="far fa-plus-square"></i>
+            </button>
             <!--         The title should be clickable-->
             <!--// when the user clicks "homepage.html" ("School" in the navbar), the following tables should be displayed:   -->
 
@@ -51,8 +55,11 @@
            <?php } ?>
         </div>
         
-        <div class="students col-lg-2">
-            <h1>Students</h1>
+        <div class="students col-lg-2" style="color:green;">
+            <button onclick="addStudent()">
+                <h2>Students</h2>
+                <i class="far fa-plus-square"></i>
+            </button>
             <!--         The title should be clickable-->
             <?php while($row = mysqli_fetch_assoc($result)){ ?>
                 <?=$row['image']; ?>
@@ -61,12 +68,41 @@
             <?php } ?>
         </div>
         
-        <div class="mainContainer col-lg-8">
-            <h1>Main Container</h1>
-            <p>Here different screens will appear when you click on "+"</p>
+        <div class="mainContainer col-lg-8" id="mainContainer">
+<!--
+            Main Container: Here different screens will appear when you click on "+"
+-->
         </div>     
     </div>
 </div>
 
+<script>
+function addCourse() 
+    {
+        var x = document.getElementById("mainContainer");
+        if (x.style.display === "none") 
+        {
+            x.style.display = "block";
+        } 
+        else 
+        {
+            x.style.display = "none";
+        }
+    }
+    
+function addstudent() 
+    {
+        var x = document.getElementById("mainContainer");
+        if (x.style.display === "none") 
+        {
+            x.style.display = "block";
+        } 
+        else 
+        {
+        x.style.display = "none";
+        }
+    }
+</script>
+    
 </body>
 </html>
