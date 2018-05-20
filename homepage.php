@@ -68,7 +68,7 @@
             <?php } ?>
         </div>
         
-        <div class="mainContainer col-lg-8" id="mainContainer">
+        <div class="mainContainer col-lg-8">
 <!--
             Main Container: Here different screens will appear when you click on "+"
 -->
@@ -79,7 +79,7 @@
 <script>
 function addCourse() 
     {
-        var x = document.getElementById("mainContainer");
+        var x = document.getElementByClass("mainContainer");
         if (x.style.display === "none") 
         {
             x.style.display = "block";
