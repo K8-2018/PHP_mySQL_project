@@ -69,9 +69,22 @@
         </div>
         
         <div class="mainContainer col-lg-8">
-<!--
-            Main Container: Here different screens will appear when you click on "+"
--->
+<!--            content from course and and student go here; also add css and php-->
+            <nav class="navbar navbar-expand-sm bg-light navbar-light">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                    <p>Course A</p>        
+                </li>
+                <li class="nav-item">
+                    <button type="submit" class="btn btn-warning" name="type" value="edit" action:'add_edit_course.php'>Edit</button>
+                </li>
+              </ul>
+            </nav>
+    
+            <div class="container-fluid">
+              <div class="courseImage"><p>Course image will be here</p></div>
+              <div class="courseDetails"><h1>Course Title</h1><p>Course description</p></div>    
+            </div>
         </div>     
     </div>
 </div>

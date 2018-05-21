@@ -41,6 +41,7 @@ $id = 0;
 </head>
     
 <body>
+<!-- This now goes to mainContainer in homepage:
     <nav class="navbar navbar-expand-sm bg-light navbar-light">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -56,6 +57,7 @@ $id = 0;
       <div class="courseImage"><p>Course image will be here</p></div>
       <div class="courseDetails"><h1>Course Title</h1><p>Course description</p></div>    
     </div>
+-->
 
 </body>
 </html>
