@@ -79,7 +79,7 @@
 <script>
 function addCourse() 
     {
-        var x = document.getElementByClass("mainContainer");
+        var x = document.getElementsByClassName("mainContainer");
         if (x.style.display === "none") 
         {
             x.style.display = "block";
@@ -90,9 +90,9 @@ function addCourse()
         }
     }
     
-function addstudent() 
+function addStudent() 
     {
-        var x = document.getElementById("mainContainer");
+        var x = document.getElementsByClassName("mainContainer");
         if (x.style.display === "none") 
         {
             x.style.display = "block";

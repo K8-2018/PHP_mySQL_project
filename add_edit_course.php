@@ -119,9 +119,10 @@ $id = 0;
     </div>
     
 <script>
-function saveFormData(){
-    var frm_element = document.getElementById ('add_edit_course').action;
-    document.getElementById("demo").innerHTML = frm_element;
+function saveFormData()
+    {
+        var frm_element = document.getElementById('add_edit_course').action;
+        document.getElementById("demo").innerHTML = frm_element;
     }
 </script>       
     <p id="demo"></p>
