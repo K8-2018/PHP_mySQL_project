@@ -1,12 +1,20 @@
 <?php
+print_r($_GET) ;   
+$id = 0;
+
     include 'connect.php';
+
+    $name = '';
+    $description = '';
+    $image = '';
+
     $sql = "SELECT * FROM course";
-    $result = mysqli_query($conn,$sql) or die("Unable to Connect, sorry :D"); //or 
-    $resultLen = mysqli_num_rows($result);
+    $result = mysqli_query($conn,$sql) or die("Unable to Connect, sorry :D"); 
+    print_r(mysqli_fetch_assoc($result));
 
     $sql = "SELECT * FROM student";
-    $result = mysqli_query($conn,$sql) or die("Unable to Connect, sorry :D"); //or 
-    $resultLen = mysqli_num_rows($result);
+    $result = mysqli_query($conn,$sql) or die("Unable to Connect, sorry :D");  
+    print_r(mysqli_fetch_assoc($result));
 ?>
 
 <!DOCTYPE html>
@@ -21,13 +29,27 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <link rel = "stylesheet" type = "text/css" href = "style.css"/>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<style>
+    .btn btn-warning{
+        margin-right: 5px;
+    }
+    .courseImage {
+        width: 25%;
+        float: left;
+        padding: 15px;
+        border: 1px solid black;
+    }
+    .courseDetails {
+        width: 75%;
+        float: left;
+        padding: 15px;
+    }
+</style>
 </head>
-
 <body>
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <!-- Brand/logo -->
   <a class="navbar-brand" href="#">Logo</a>
-  
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
@@ -36,30 +58,21 @@
     <li class="nav-item">
       <a class="nav-link" href="#">Administration</a>
     </li>
-    
+<!--    user id should be here-->
   </ul>
 </nav>
-
 <div class="container-fluid">
     <div class="row">
         <div class="courses col-lg-2" style="color:green;">
-            <button onclick="addCourse()">
-                <h2>Courses</h2>
-                <i class="far fa-plus-square"></i>
-            </button>
-            <!--         The title should be clickable-->
-            <!--// when the user clicks "homepage.html" ("School" in the navbar), the following tables should be displayed:   -->
-
+            <h6>Courses</h6>
+            <i class="far fa-plus-square" onclick="addCourse();"></i>
             <?php while($row = mysqli_fetch_assoc($result)){ ?>
                 <?=$row['name']; ?>
-           <?php } ?>
+            <?php } ?>
         </div>
-        
         <div class="students col-lg-2" style="color:green;">
-            <button onclick="addStudent()">
-                <h2>Students</h2>
-                <i class="far fa-plus-square"></i>
-            </button>
+            <h6>Students</h6>
+            <i class="far fa-plus-square" onclick="addStudent();"></i>
             <!--         The title should be clickable-->
             <?php while($row = mysqli_fetch_assoc($result)){ ?>
                 <?=$row['image']; ?>
@@ -67,28 +80,51 @@
                 <?=$row['phone']; ?>
             <?php } ?>
         </div>
-        
         <div class="mainContainer col-lg-8">
-<!--            content from course and and student go here; also add css and php-->
-            <nav class="navbar navbar-expand-sm bg-light navbar-light">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                    <p>Course A</p>        
-                </li>
-                <li class="nav-item">
-                    <button type="submit" class="btn btn-warning" name="type" value="edit" action:'add_edit_course.php'>Edit</button>
-                </li>
-              </ul>
-            </nav>
-    
-            <div class="container-fluid">
-              <div class="courseImage"><p>Course image will be here</p></div>
-              <div class="courseDetails"><h1>Course Title</h1><p>Course description</p></div>    
-            </div>
-        </div>     
+            <div class="smallContainer" id="add_edit_course"></div>
+            <div class="smallContainer" id="course">
+                <nav class="navbar navbar-expand-sm bg-light navbar-light">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+            <!--            which solution is better?-->
+            <!--
+                        <?php while($row = mysqli_fetch_assoc($result)){ ?>
+                            <?=$row['name']; ?>
+                        <?php } ?>  
+            -->
+                        <?php echo $name; ?>
+                    </li>
+                    <li class="nav-item">
+                        <button type="submit" class="btn btn-warning" name="type" value="edit" action:'add_edit_course.php'>Edit</button>
+                    </li>
+                  </ul>
+                </nav>
+                <div class="container-fluid">  
+                  <div class="courseImage">
+                    <?php while($row = mysqli_fetch_assoc($result)){ ?>
+                        <?=$row['image']; ?>
+                    <?php } ?>
+                      
+<!--                      which solution is preferable?-->
+                      
+                    <?php echo $image; ?>
+                  </div>
+                  <div class="courseDetails">
+                    <?php while($row = mysqli_fetch_assoc($result)){ ?>
+                      <h1><?=$row['name']; ?></h1>
+                      <p><?=$row['description']; ?></p> 
+                    <?php } ?>  
+                     
+                      <!--                      which solution is preferable?-->
+                      <?php echo $name.":".$description.":"; ?>
+                  </div>    
+                </div>
+            </div>    
+            <div class="smallContainer" id="addStudent"></div>
+            <div class="smallContainer" id="student"></div>
+        </div>
     </div>
 </div>
-
 <script>
 function addCourse() 
     {
@@ -115,7 +151,6 @@ function addStudent()
         x.style.display = "none";
         }
     }
-</script>
-    
+</script> 
 </body>
 </html>

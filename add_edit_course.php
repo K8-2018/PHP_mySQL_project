@@ -125,9 +125,8 @@ function saveFormData()
         document.getElementById("demo").innerHTML = frm_element;
     }
 </script>       
-    <p id="demo"></p>
+   <p id="demo"></p>
 
-<!-- במסך עריכה יש לטעון את כל פרטי הקורס לטופס
    <div class="course">
        <?php if($type == "save") { ?>
      <table>
@@ -147,6 +146,5 @@ function saveFormData()
      </table>
         <?php } ?>
    </div>    
--->
 </body>
 </html>
