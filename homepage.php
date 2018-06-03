@@ -68,31 +68,29 @@ $id = 0;
             <i class="far fa-plus-square" onclick="addCourse();"></i>
             <?php while($row = mysqli_fetch_assoc($result)){ ?>
                 <?=$row['name']; ?>
+            <!--         onclick: course-->
             <?php } ?>
         </div>
         <div class="students col-lg-2" style="color:green;">
             <h6>Students</h6>
             <i class="far fa-plus-square" onclick="addStudent();"></i>
-            <!--         The title should be clickable-->
             <?php while($row = mysqli_fetch_assoc($result)){ ?>
                 <?=$row['image']; ?>
                 <?=$row['name']; ?>
+            <!--         onclick: student-->
                 <?=$row['phone']; ?>
             <?php } ?>
         </div>
         <div class="mainContainer col-lg-8">
-            <div class="smallContainer" id="add_edit_course"></div>
+            <div class="smallContainer" id="student"></div>
+            <div class="smallContainer" id="addStudent"></div>
             <div class="smallContainer" id="course">
                 <nav class="navbar navbar-expand-sm bg-light navbar-light">
                   <ul class="navbar-nav">
                     <li class="nav-item">
-            <!--            which solution is better?-->
-            <!--
                         <?php while($row = mysqli_fetch_assoc($result)){ ?>
                             <?=$row['name']; ?>
                         <?php } ?>  
-            -->
-                        <?php echo $name; ?>
                     </li>
                     <li class="nav-item">
                         <button type="submit" class="btn btn-warning" name="type" value="edit" action:'add_edit_course.php'>Edit</button>
@@ -104,28 +102,21 @@ $id = 0;
                     <?php while($row = mysqli_fetch_assoc($result)){ ?>
                         <?=$row['image']; ?>
                     <?php } ?>
-                      
-<!--                      which solution is preferable?-->
-                      
-                    <?php echo $image; ?>
                   </div>
                   <div class="courseDetails">
                     <?php while($row = mysqli_fetch_assoc($result)){ ?>
                       <h1><?=$row['name']; ?></h1>
                       <p><?=$row['description']; ?></p> 
                     <?php } ?>  
-                     
-                      <!--                      which solution is preferable?-->
-                      <?php echo $name.":".$description.":"; ?>
                   </div>    
                 </div>
-            </div>    
-            <div class="smallContainer" id="addStudent"></div>
-            <div class="smallContainer" id="student"></div>
+            </div> 
+            <div class="smallContainer" id="add_edit_course"></div>
         </div>
     </div>
 </div>
 <script>
+    //check whether it's the right container; add functions for more divs
 function addCourse() 
     {
         var x = document.getElementsByClassName("mainContainer");
